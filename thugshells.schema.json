@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thugshells.ca/app/content.schema.json",
+  "title": "Thugshells App Content",
+  "description": "Remotely-updatable content displayed in the Thugshells app. Host this document (validated against this schema) on a static host (e.g. Cloudflare Pages); the app fetches it, caches the last-good copy, and falls back to values bundled in the build.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "quotes"],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1,
+      "description": "Content format version. The app reads this first; bump it only for breaking changes so older installed app versions can degrade gracefully."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this content was last edited (informational only)."
+    },
+    "timezone": {
+      "type": "string",
+      "default": "America/Los_Angeles",
+      "description": "Thug Shells' home IANA timezone (Los Angeles). Weekly stream times are AUTHORED in this zone; the app converts them to each device's local timezone for display. Events are NOT governed by this value — each event carries its own timezone (see events[].startsAt / events[].timezone)."
+    },
+    "quotes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Quote of the Day pool. The app picks one deterministically per calendar day.",
+      "items": { "$ref": "#/$defs/quote" }
+    },
+    "streams": { "$ref": "#/$defs/streams" },
+    "events": {
+      "type": "array",
+      "description": "Upcoming live shows. Past events may be filtered out by the app.",
+      "items": { "$ref": "#/$defs/event" }
+    },
+    "socials": {
+      "type": "array",
+      "description": "Outbound links shown on the Socials tab, in display order.",
+      "items": { "$ref": "#/$defs/social" }
+    },
+    "newsletter": { "$ref": "#/$defs/newsletter" },
+    "announcements": {
+      "type": "array",
+      "description": "Optional featured messages/banners. Not yet rendered by the app; reserved for future use.",
+      "items": { "$ref": "#/$defs/announcement" }
+    }
+  },
+  "$defs": {
+    "quote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The quote as displayed. No surrounding quotation marks."
+        },
+        "source": {
+          "type": "string",
+          "description": "Where it's from (e.g. 'TEDx talk', 'NAMM 2025'). Not currently displayed, but kept for attribution."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["bar", "funny", "wisdom", "hype"],
+          "description": "Optional grouping."
+        }
+      }
+    },
+    "streams": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schedule"],
+      "properties": {
+        "channelUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Main Twitch channel, opened by the 'Watch on Twitch' button."
+        },
+        "djChannelUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional secondary (DJ) Twitch channel."
+        },
+        "schedule": {
+          "type": "array",
+          "description": "Recurring weekly stream slots.",
+          "items": { "$ref": "#/$defs/streamSlot" }
+        }
+      }
+    },
+    "streamSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weekday", "startTime", "title"],
+      "properties": {
+        "weekday": {
+          "type": "string",
+          "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        },
+        "startTime": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+          "description": "24-hour HH:MM authored in the document's `timezone` (Thug Shells' home zone). The app converts this to the DEVICE's local timezone for display, so viewers everywhere see the stream in their own time."
+        },
+        "title": { "type": "string", "minLength": 1 }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "startsAt", "timezone"],
+      "description": "A physical live show. Displayed in the EVENT's own local timezone (the venue's), never the device's or the document's, so 8pm at the venue always reads as 8pm.",
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "venue": { "type": "string" },
+        "city": { "type": "string" },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 WITH the venue's UTC offset (e.g. 2026-08-02T21:00:00-04:00). The offset must match `timezone`; it encodes the local wall-clock time at the venue."
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone of the venue (e.g. America/New_York). Drives the displayed local time and zone label; must agree with the offset in `startsAt`."
+        },
+        "ticketUrl": { "type": "string", "format": "uri" },
+        "streamUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "If this show is ALSO streamed online, the watch link. Cross-references the event to a stream so fans who can't attend in person can tune in."
+        }
+      }
+    },
+    "social": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "url", "platform"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "platform": {
+          "type": "string",
+          "description": "Drives the brand icon and default color.",
+          "enum": [
+            "website", "twitch", "instagram", "youtube", "tiktok",
+            "twitter", "facebook", "soundcloud", "spotify", "bandcamp",
+            "newsletter", "other"
+          ]
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Optional brand color override as #RRGGBB."
+        }
+      }
+    },
+    "newsletter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signupUrl"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "signupUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Hosted signup form (Mailchimp or similar). The provider owns confirmation and unsubscribe."
+        }
+      }
+    },
+    "announcement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable unique id (used to remember dismissals)."
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "body": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "startsAt": { "type": "string", "format": "date-time" },
+        "endsAt": { "type": "string", "format": "date-time" },
+        "dismissible": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}
+
