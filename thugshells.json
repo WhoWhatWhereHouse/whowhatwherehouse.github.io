@@ -193,6 +193,11 @@
       },
       {
         "weekday": "saturday",
+        "startTime": "14:00",
+        "title": "DJ Drum and Bass Stream"
+      },
+      {
+        "weekday": "saturday",
         "startTime": "15:00",
         "title": "Fan Battle Saturdays"
       }
