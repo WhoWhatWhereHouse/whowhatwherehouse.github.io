@@ -20,7 +20,7 @@
     "timezone": {
       "type": "string",
       "default": "America/Los_Angeles",
-      "description": "Thug Shells' home IANA timezone (Los Angeles). Weekly stream times are AUTHORED in this zone; the app converts them to each device's local timezone for display. Events are NOT governed by this value — each event carries its own timezone (see events[].startsAt / events[].timezone)."
+      "description": "Thug Shells' home IANA timezone (Los Angeles). Weekly stream times are AUTHORED in this zone; the app converts them to each device's local timezone for display. Events are NOT governed by this value. Each event carries its own timezone (see events[].startsAt / events[].timezone)."
     },
     "quotes": {
       "type": "array",
