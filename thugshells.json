@@ -243,6 +243,30 @@
       "startsAt": "2026-08-30T12:00:00-07:00",
       "timezone": "America/Los_Angeles",
       "ticketUrl": "https://www.chaminade.com/things-to-do-santa-cruz/pawsh-dog-retreat/"
+    },
+    {
+      "title": "FAN EXPO Dallas",
+      "venue": "Kay Bailey Hutchison Convention Center",
+      "city": "Dallas, TX",
+      "startsAt": "2026-09-11T16:00:00-05:00",
+      "timezone": "America/Chicago",
+      "ticketUrl": "https://fanexpohq.com/fanexpodallas/"
+    },
+    {
+      "title": "Edmonton Expo",
+      "venue": "Edmonton Expo Centre",
+      "city": "Edmonton, AB",
+      "startsAt": "2026-09-18T16:00:00-06:00",
+      "timezone": "America/Edmonton",
+      "ticketUrl": "https://fanexpohq.com/edmontonexpo/"
+    },
+    {
+      "title": "TwitchCon San Diego 2026",
+      "venue": "San Diego Convention Center",
+      "city": "San Diego, CA",
+      "startsAt": "2026-11-13T10:00:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "ticketUrl": "https://www.twitchcon.com/san-diego-2026/"
     }
   ],
   "socials": [
