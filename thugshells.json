@@ -213,37 +213,12 @@
       "ticketUrl": "https://www.tixr.com/groups/midwaysf/events/dirtwire-at-888-garage-195240"
     },
     {
-      "title": "Summer Cypher Tour",
-      "venue": "The Fillmore",
-      "city": "San Francisco, CA",
-      "startsAt": "2026-07-18T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "ticketUrl": "https://tickets.example.com/sf"
-    },
-    {
-      "title": "Rooftop Freestyle Session",
-      "venue": "Output",
-      "city": "Brooklyn, NY",
-      "startsAt": "2026-08-02T21:00:00-04:00",
-      "timezone": "America/New_York",
-      "ticketUrl": "https://tickets.example.com/bk",
-      "streamUrl": "https://twitch.tv/thugshells"
-    },
-    {
       "title": "11th Annual Parks & Rex Dog Pool Party",
       "venue": "Simpkins Family Swim Center",
       "city": "Santa Cruz, CA",
       "startsAt": "2026-08-15T11:00:00-07:00",
       "timezone": "America/Los_Angeles",
       "ticketUrl": "https://parks.santacruzcountyca.gov/Home/FindAProgram/Recreation/ParksRex.aspx"
-    },
-    {
-      "title": "GOAT Homecoming",
-      "venue": "The Novo",
-      "city": "Los Angeles, CA",
-      "startsAt": "2026-09-12T19:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "ticketUrl": "https://tickets.example.com/la"
     }
   ],
   "socials": [
