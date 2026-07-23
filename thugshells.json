@@ -230,6 +230,14 @@
       "streamUrl": "https://twitch.tv/thugshells"
     },
     {
+      "title": "11th Annual Parks & Rex Dog Pool Party",
+      "venue": "Simpkins Family Swim Center",
+      "city": "Santa Cruz, CA",
+      "startsAt": "2026-08-15T11:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "ticketUrl": "https://parks.santacruzcountyca.gov/Home/FindAProgram/Recreation/ParksRex.aspx"
+    },
+    {
       "title": "GOAT Homecoming",
       "venue": "The Novo",
       "city": "Los Angeles, CA",
