@@ -219,6 +219,14 @@
       "startsAt": "2026-08-15T11:00:00-07:00",
       "timezone": "America/Los_Angeles",
       "ticketUrl": "https://parks.santacruzcountyca.gov/Home/FindAProgram/Recreation/ParksRex.aspx"
+    },
+    {
+      "title": "Pawsh Retreat",
+      "venue": "Chaminade Resort & Spa",
+      "city": "Santa Cruz, CA",
+      "startsAt": "2026-08-30T12:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "ticketUrl": "https://www.chaminade.com/things-to-do-santa-cruz/pawsh-dog-retreat/"
     }
   ],
   "socials": [
