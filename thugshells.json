@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-09T12:00:00-07:00",
+  "updatedAt": "2026-07-22T12:00:00-07:00",
   "timezone": "America/Los_Angeles",
   "quotes": [
     {
@@ -204,6 +204,14 @@
     ]
   },
   "events": [
+    {
+      "title": "Dirtwire: Temple of Harm Reduction Fundraiser",
+      "venue": "888 Garage SF",
+      "city": "San Francisco, CA",
+      "startsAt": "2026-07-24T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "ticketUrl": "https://www.tixr.com/groups/midwaysf/events/dirtwire-at-888-garage-195240"
+    },
     {
       "title": "Summer Cypher Tour",
       "venue": "The Fillmore",
